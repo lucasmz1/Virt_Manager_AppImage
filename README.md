@@ -1,7 +1,6 @@
 # Virt_Manager_AppImage
 
-Attention: This application doesn't work don't download it.
-I've made this purelly for testing porpose, but due to the many python dependencies it doesn't work properlly.
-Have that in mind if you download it!
+<br>The app just works now, download the 0.3 AppBundle, make it executable with chmod +x, or in properties.
+the first time the app spawn you may see an error due to libvirt conection, delete it and make an new one, then everything will work fine, it's just a bug due to pack an app that wasn't desinged to be bundled that way. enjoy!<br/>
 <h1>Telegram Group<h1/>
 <h1>https://t.me/appimagelucasmz1<h1/>
