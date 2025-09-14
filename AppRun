@@ -13,6 +13,7 @@ fi
 # Configurações do Bubblewrap
 BWRAP_OPTIONS="--bind $HERE/root /                   \
     --share-net                                      \
+    --bind /home /home                           \
     --bind     /tmp /tmp			     \
     --dev-bind /dev /dev                             \
     --proc /proc			             \
