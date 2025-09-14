@@ -1,0 +1,57 @@
+#!/bin/bash
+
+set -e
+
+SELF=$(readlink -f "$0")
+HERE=${SELF%/*}
+
+# Permitir acesso ao X11
+if command -v xhost >/dev/null 2>&1; then
+    xhost +SI:localuser:$(whoami)
+else
+    echo "Aviso: xhost não encontrado. Continuando sem configurar acesso ao X11."
+fi
+
+# Configurações do Bubblewrap
+BWRAP_OPTIONS="--bind $HERE/root /                   \
+    --share-net                                      \
+    --bind     /tmp /tmp			     \
+    --dev-bind /dev /dev                             \
+    --proc /proc			             \
+    --bind-try /run /run                             \
+    --bind-try /var/run/libvirt /var/run/libvirt     \
+    --bind-try /run/user/$(id -u)/bus /run/user/$(id -u)/bus \
+    --bind-try $HOME/.cache/libvirt $HOME/.cache/libvirt \
+    --bind-try /run/user/$(id -u)/libvirt /run/user/$(id -u)/libvirt \
+    --dev-bind /dev/vhost-vsock /dev/vhost-vsock     \
+    --bind-try /sys /sys                             \
+    --bind-try /media /media                         \
+    --bind-try /mnt /mnt                             \
+    --bind-try /home /home                           \
+    --ro-bind-try /etc/fonts /etc/fonts              \
+    --ro-bind-try /usr/share/fonts /usr/share/fonts \
+    --ro-bind-try /etc/localtime /etc/localtime      \
+    --ro-bind-try /etc/machine-id /etc/machine-id    \
+    --ro-bind-try /etc/resolv.conf /etc/resolv.conf  \
+    --ro-bind-try /lib/firmware /lib/firmware        \
+    --ro-bind-try /etc/passwd /etc/passwd            \
+    --ro-bind-try /etc/hosts /etc/hosts              \
+    --ro-bind-try /etc/nsswitch.conf /etc/nsswitch.conf \
+    --ro-bind-try /etc/group /etc/group              \
+    --setenv DBUS_SESSION_BUS_ADDRESS \"unix:path=/run/user/$(id -u)/bus\" \
+    --setenv SELF \"$SELF\"                          \
+    --setenv SELF_TEMPDIR \"$HERE/root\"             \
+    --setenv BWROOTFS \"$HERE/root\"                 \
+    --setenv ARGV0 \"$ARGV0\"                        \
+    --setenv ARGS \"$@\"                             \
+    --setenv WITHIN_BWRAP \"1\"                      \
+    --cap-add CAP_NET_BIND_SERVICE                   \
+    --cap-add CAP_SYS_ADMIN"
+
+# Executa virt-manager dentro do bwrap
+$HERE/bwrap $BWRAP_OPTIONS virt-manager --connect qemu:///session "$@" | cat
+
+# Remove acesso ao X11
+if command -v xhost >/dev/null 2>&1; then
+    xhost -SI:localuser:$(whoami)
+fi
