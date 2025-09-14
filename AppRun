@@ -31,7 +31,6 @@ BWRAP_OPTIONS="--bind $HERE/root /                   \
     --ro-bind-try /usr/share/fonts /usr/share/fonts \
     --ro-bind-try /etc/machine-id /etc/machine-id    \
     --ro-bind-try /etc/resolv.conf /etc/resolv.conf  \
-    --ro-bind-try /lib/firmware /lib/firmware        \
     --ro-bind-try /etc/passwd /etc/passwd            \
     --ro-bind-try /etc/hosts /etc/hosts              \
     --ro-bind-try /etc/nsswitch.conf /etc/nsswitch.conf \
