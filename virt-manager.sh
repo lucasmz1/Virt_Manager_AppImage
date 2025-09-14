@@ -10,7 +10,7 @@ tar xf archlinux-bootstrap-x86_64.tar.zst -C ./arch/
 cp /etc/resolv.conf -t ${GITHUB_WORKSPACE}/arch/root.x86_64/etc/ && cp ${GITHUB_WORKSPACE}/mirrorlist -t ${GITHUB_WORKSPACE}/arch/root.x86_64/etc/pacman.d/ && cp ${GITHUB_WORKSPACE}/pacman.conf -t ${GITHUB_WORKSPACE}/arch/root.x86_64/etc/
 cd ${GITHUB_WORKSPACE}
 sudo chroot ./arch/root.x86_64/ /bin/bash -c "pacman -Syyu --noconfirm && pacman -Sy virt-manager swtpm dnsmasq virtiofsd qemu-full jack2 --noconfirm && pacman -Scc --noconfirm && rm -rf /var/cache/pacman/pkg/*"
-wget -c "https://github.com/lucasmz1/bubblewrap-musl-static/releases/download/7f9bc5f/bwrap-x86_64" -o bwrap && chmod +x bwrap && mv bwrap ./arch/
+wget -c "https://github.com/lucasmz1/bubblewrap-musl-static/releases/download/7f9bc5f/bwrap-x86_64" && mv bwrap-x86_64 bwrap && chmod +x bwrap && mv bwrap ./arch/
 cp ${GITHUB_WORKSPACE}/AppRun ${GITHUB_WORKSPACE}/arch/
 chmod a+x ${GITHUB_WORKSPACE}/arch/AppRun 
 cp ${GITHUB_WORKSPACE}/virt-manager.desktop -t ${GITHUB_WORKSPACE}/arch/ 
