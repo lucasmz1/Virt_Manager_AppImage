@@ -24,7 +24,6 @@ BWRAP_OPTIONS="--bind $HERE/root /                   \
     --bind-try /run/user/$(id -u)/libvirt /run/user/$(id -u)/libvirt \
     --dev-bind /dev/vhost-vsock /dev/vhost-vsock     \
     --bind-try /sys /sys                             \
-    --bind-try /media /media                         \
     --bind-try /mnt /mnt                             \
     --bind-try /home /home                           \
     --ro-bind-try /etc/fonts /etc/fonts              \
