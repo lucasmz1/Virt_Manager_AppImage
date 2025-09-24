@@ -2,7 +2,7 @@
 sudo apt-get install desktop-file-utils debootstrap schroot perl git wget xz-utils bubblewrap autoconf coreutils
 wget -q "https://github.com/pkgforge-dev/appimagetool-uruntime/releases/download/continuous/appimagetool-x86_64.AppImage" -O appimagetool && chmod a+x appimagetool
 wget -c "https://archive.archlinux.org/iso/"
-wget -c "https://github.com/xplshn/pelf/releases/download/190/pelf_x86_64" -o pelf
+wget -c "https://github.com/xplshn/pelf/releases/download/190/pelf_x86_64" -o pelf && chmod a+x pelf
 cat index.html | tail -n 3 | awk '{print $2}' | cut -d "/" -f 1 | cut -d "\"" -f 2 | xargs -i -t -exec wget -r --no-parent np -l 1 -A "*.zst" -erobots=off -P . "https://archive.archlinux.org/iso/{}/archlinux-bootstrap-x86_64.tar.zst"
 find ${GITHUB_WORKSPACE} -name '*.zst' | xargs -i -t -exec mv {} ${GITHUB_WORKSPACE}
 mkdir arch
