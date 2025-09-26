@@ -18,4 +18,4 @@ cp ${GITHUB_WORKSPACE}/virt-manager.desktop -t ${GITHUB_WORKSPACE}/arch/
 cp ${GITHUB_WORKSPACE}/virt-manager.png -t ${GITHUB_WORKSPACE}/arch/
 mv ${GITHUB_WORKSPACE}/arch/root.x86_64/  ${GITHUB_WORKSPACE}/arch/root/
 ARCH=x86_64 ./appimagetool -n ./arch/
-./pelf -d --add-appdir "./arch/" --appbundle-id "Virt-Manager-lucasmz1" --output-to "Virt-Manager.dwf.AppBundle"
+sh -c './pelf -d --add-appdir "./arch/" --appbundle-id "Virt-Manager-lucasmz1" --output-to "Virt-Manager.dwf.AppBundle"'
