@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt-get install desktop-file-utils debootstrap schroot perl git wget xz-utils bubblewrap autoconf coreutils
+sudo apt install desktop-file-utils debootstrap schroot perl git wget xz-utils bubblewrap autoconf coreutils -y
 wget -q "https://github.com/pkgforge-dev/appimagetool-uruntime/releases/download/continuous/appimagetool-x86_64.AppImage" -O appimagetool && chmod a+x appimagetool
 wget -c "https://archive.archlinux.org/iso/"
 wget -c "https://github.com/xplshn/pelf/releases/download/190/pelf_x86_64" -o pelf && chmod a+x pelf
