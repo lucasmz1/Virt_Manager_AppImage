@@ -1,4 +1,5 @@
 ##
+Server=https://archive.archlinux.org/repos/2025/03/17/$repo/os/$arch
 ## Arch Linux repository mirrorlist
 ## Generated on 2024-07-17
 ##
@@ -69,7 +70,7 @@
 #Server = http://archlinux.pop-es.rnp.br/$repo/os/$arch
 #Server = http://mirror.ufam.edu.br/archlinux/$repo/os/$arch
 #Server = http://mirror.ufscar.br/archlinux/$repo/os/$arch
-Server = https://mirror.ufscar.br/archlinux/$repo/os/$arch
+#Server = https://mirror.ufscar.br/archlinux/$repo/os/$arch
 
 ## Bulgaria
 #Server = https://mirror.darklinux.uk/archlinux/$repo/os/$arch
